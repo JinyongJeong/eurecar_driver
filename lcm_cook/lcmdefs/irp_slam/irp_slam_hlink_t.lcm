@@ -1,0 +1,29 @@
+package irp_slam;
+
+/**
+ * Add a hypothesis link
+ */
+
+struct hlink_t
+{
+    int64_t utime;
+
+    int64_t node_id1;
+    int64_t node_id2;
+
+    int32_t n;          
+    double xcjci[n];        //navigation prior
+    int32_t n2;
+    double Scjci[n2];
+    
+    // for camera only (because it is a bearing measurement)
+    // pass this information via vlink from client
+    boolean   dynamic_xvs;  // need static vehicle to sensor xform 
+    int32_t n3;
+    double    x_vs1[n3];
+    double    x_vs2[n3];
+
+    // dynamic covariance scaling
+    int8_t use_dcs;
+    
+}
